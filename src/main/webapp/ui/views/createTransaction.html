@@ -1,0 +1,74 @@
+<div class="col-md-offset-2 col-md-7" style="border: 2px solid green">
+
+	<h2 class="text-center">Enter Transaction</h2>
+	<form id="txn" class="form-horizontal" ng-submit="createTransaction()">
+		<fieldset>
+			<div class="control-group">
+				<label class="control-label" for="txnDate">TransactionDate:</label>
+				<div class="controls">
+					<input id="txnDate" name="txnDate" ng-model="txn.txnDate"
+						class="form-control" type="date" placeholder="TransactionDate"
+						class="input-large" required="">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="txnDoneBy">TransactionDoneBy:</label>
+				<div class="controls">
+					<input id="txnDoneBy" name="txnDoneBy" ng-model="txn.txnDoneBy"
+						class="form-control" type="number" placeholder="txnDoneBy"
+						class="input-large" required="">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="txnAddedBy">TransactionAddedBy:</label>
+				<div class="controls">
+					<input id="txnAddedBy" name="txnAddedBy" ng-model="txn.txnAddedBy"
+						class="form-control" type="number" placeholder="txnAddedBy"
+						class="input-large" required="">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="txnCategory">TransactionCategory:</label>
+				<div class="controls">
+					<input id="txnCategory" name="txnCategory"
+						ng-model="txn.txnCategory" class="form-control" type="number"
+						placeholder="txnCategory" class="input-large" required="">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="txnDetails">TransactionDetails:</label>
+				<div class="controls">
+					<input id="txnDetails" name="txnDetails" ng-model="txn.txnDetails"
+						class="form-control" type="text" placeholder="txnDetails"
+						class="input-large" required="">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="txnAmount">TransactionDetails:</label>
+				<div class="controls">
+					<input id="txnAmount" name="txnAmount" ng-model="txn.txnAmount"
+						class="form-control" type="number" placeholder="txnAmount"
+						class="input-large" required="">
+				</div>
+			</div>
+			<!-- Password input-->
+			<!-- <div class="control-group">
+				<label class="control-label" for="password">Password:</label>
+				<div class="controls">
+					<input required="" id="loginPassword" ng-model="user.password"
+						name="password" class="form-control" type="password"
+						placeholder="********" class="input-medium">
+				</div>
+			</div> -->
+
+			<!-- Button -->
+			<div class="control-group">
+				<label class="control-label" for="createTransaction"></label>
+				<div class="controls">
+					<input type="submit" id="submit" class="btn btn-success"
+						value="create transaction" />
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>
