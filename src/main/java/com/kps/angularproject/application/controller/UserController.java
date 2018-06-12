@@ -24,6 +24,14 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	public UserService getUserService() {
+		return this.userService;
+	}
+	
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+	
 	@SuppressWarnings("rawtypes")
 	@RequestMapping(value = "/validate", method = RequestMethod.POST)
 	public ResponseEntity validate(@RequestBody String userString, HttpServletRequest request) {

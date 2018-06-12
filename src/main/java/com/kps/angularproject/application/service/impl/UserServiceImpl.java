@@ -22,8 +22,8 @@ import com.kps.angularproject.application.service.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 
-	@Autowired
-	private SessionFactory sessionFactory;
+//	@Autowired
+//	private SessionFactory sessionFactory;
 	
 	@Autowired
 	private TransactionDAO txnDaoObject;
