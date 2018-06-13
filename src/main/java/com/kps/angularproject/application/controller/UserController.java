@@ -24,14 +24,6 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	public UserService getUserService() {
-		return this.userService;
-	}
-	
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
-	
 	@SuppressWarnings("rawtypes")
 	@RequestMapping(value = "/validate", method = RequestMethod.POST)
 	public ResponseEntity validate(@RequestBody String userString, HttpServletRequest request) {
@@ -43,7 +35,6 @@ public class UserController {
 	@SuppressWarnings({ "unchecked", "rawtypes", "unchecked" })
 	@RequestMapping(value = "/details", method = RequestMethod.GET)
 	public ResponseEntity<List> userDetails() {
-//		userService.saveUserDetails();
 		List userDetails = userService.getUserDetails();
 		return new ResponseEntity<List>(userDetails, HttpStatus.OK);
 	}
@@ -51,7 +42,7 @@ public class UserController {
 	@RequestMapping(value = "/createTransaction", method = RequestMethod.POST)
 	public ResponseEntity createTransaction(@RequestBody String requestDetails, HttpServletRequest request) {
 		TransactionModel txnObject = new Gson().fromJson(requestDetails, TransactionModel.class);
-		userService.createTransaction(txnObject);;
+		userService.createTransaction(txnObject);
 		return new ResponseEntity(HttpStatus.OK);
 	}
 
