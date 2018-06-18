@@ -15,6 +15,7 @@ public class UserDaoImpl implements UserDao {
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	@Override
 	public boolean saveUserDetails(UserModel userModel) {
 		User user = new User();
 		User.UserName userName = new User.UserName();
@@ -26,10 +27,14 @@ public class UserDaoImpl implements UserDao {
 		user.setUserName(userName);
 		user.setUserDetails(userDetails);
 		user.setUserPassword(userModel.getPassword());
-		Session session = sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		session.save(user);
-		tx.commit();
-		return true;
+		try (Session session = sessionFactory.openSession()) {
+			Transaction tx = session.beginTransaction();
+			session.save(user);
+			tx.commit();
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 }

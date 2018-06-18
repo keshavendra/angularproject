@@ -24,7 +24,8 @@ public class TransactionDAOImpl implements TransactionDAO{
 	
 	@Transactional
 	public void addTransaction(TransactionModel txnObject) {
-		Session session = sessionFactory.openSession();
+		
+		try(Session session = sessionFactory.openSession()){
 		TransactionsDetails txnODetailsObject = new TransactionsDetails();
 		Category cat = session.get(Category.class, Integer.parseInt(txnObject.getTxnCategory()));
 		txnODetailsObject.setCategory(cat);
@@ -38,7 +39,10 @@ public class TransactionDAOImpl implements TransactionDAO{
 		Transaction tx = session.getTransaction();
 		tx.begin();
 		session.save(txnODetailsObject);
-		tx.commit();
+		tx.commit();}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
