@@ -13,6 +13,7 @@ import com.kps.angularproject.application.config.WebConfig;
 
 public class ApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 	 
+	@Override
     public void onStartup(ServletContext container) throws ServletException {
  
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();

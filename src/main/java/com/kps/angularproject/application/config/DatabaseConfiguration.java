@@ -4,6 +4,7 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,26 +12,29 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-//@ComponentScan({ "com.kps.angularproject.application.config" })
 @PropertySource(value = { "classpath:application.properties" })
 public class DatabaseConfiguration {
+
+	private static final Logger LOG = Logger.getLogger(DatabaseConfiguration.class);
 
 	@Autowired
 	private Environment environment;
 
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
+		LOG.debug("Session Factory is loading...!!!");
 		LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] { "com.kps.angularproject.application.dao" });
-        sessionFactory.setHibernateProperties(hibernateProperties());
-        return sessionFactory;
+		sessionFactory.setDataSource(dataSource());
+		sessionFactory.setPackagesToScan("com.kps.angularproject.application.dao");
+		sessionFactory.setHibernateProperties(hibernateProperties());
+		LOG.debug("Session Factory is loaded...!!!");
+		return sessionFactory;
 	}
 
 	@Bean
