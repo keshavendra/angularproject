@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="txnDetails")
+@Table(name = "txnDetails")
 public class TransactionsDetails {
 
 	private int txnId;
@@ -28,7 +28,7 @@ public class TransactionsDetails {
 	private List<TransactionImage> txnImages;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getTxnId() {
 		return txnId;
 	}
@@ -118,7 +118,7 @@ public class TransactionsDetails {
 		this.txnEntryDate = txnEntryDate;
 	}
 
-	public static enum TransactionType {
+	public enum TransactionType {
 		CREDIT("CR"), DEBIT("DR");
 		private String val;
 

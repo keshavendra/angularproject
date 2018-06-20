@@ -12,6 +12,15 @@
 		<spring.version>4.2.5.RELEASE</spring.version>
 		<jackson.version>2.7.2</jackson.version>
 		<hibernate.version>5.2.9.Final</hibernate.version>
+		<sonar.sources>src/main/java</sonar.sources>
+		<sonar.language>java</sonar.language>
+		<sonar.binaries>target/angularproject-0.0.1-SNAPSHOT/WEB-INF/classes</sonar.binaries>
+		<sonar.tests>src/test/java</sonar.tests>
+		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+		<sonar.junit.reportsPath>target/surefire-reports</sonar.junit.reportsPath>
+		<sonar.java.coveragePlugin>findbugs</sonar.java.coveragePlugin>
+		<sonar.findbugs.reportPaths>target/findbugs.xml</sonar.findbugs.reportPaths>
+		<findsecbugs.version>1.7.1</findsecbugs.version>
 	</properties>
 
 	<dependencies>
@@ -124,6 +133,12 @@
 			<version>1.9.5</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.h3xstream.findsecbugs</groupId>
+			<artifactId>findsecbugs-plugin</artifactId>
+			<version>${findsecbugs.version}</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -141,8 +156,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.7.0</version>
 				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -152,7 +167,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>findbugs-maven-plugin</artifactId>
-				<version>2.5.2</version>
+				<version>3.0.1</version>
 				<configuration>
 					<!-- Enables analysis which takes more memory but finds more bugs. If 
 						you run out of memory, changes the value of the effort element to 'low'. -->

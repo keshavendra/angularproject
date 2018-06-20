@@ -6,15 +6,11 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kps.angularproject.application.dao.TransactionDAO;
 import com.kps.angularproject.application.dao.UserDao;
-import com.kps.angularproject.application.dao.hibernatepojo.User;
 import com.kps.angularproject.application.model.TransactionModel;
 import com.kps.angularproject.application.model.UserModel;
 import com.kps.angularproject.application.service.UserService;
@@ -22,9 +18,6 @@ import com.kps.angularproject.application.service.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 
-//	@Autowired
-//	private SessionFactory sessionFactory;
-	
 	@Autowired
 	private TransactionDAO txnDaoObject;
 	
