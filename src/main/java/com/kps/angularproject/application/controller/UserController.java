@@ -32,7 +32,7 @@ public class UserController {
 		return new ResponseEntity(HttpStatus.OK);
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes", "unchecked" })
+	@SuppressWarnings({ "rawtypes" })
 	@RequestMapping(value = "/details", method = RequestMethod.GET)
 	public ResponseEntity<List> userDetails() {
 		List userDetails = userService.getUserDetails();
